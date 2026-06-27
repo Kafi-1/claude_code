@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Kafi Claude Code Guide
+    </title>
+    <style>
+      *{box-sizing:border-box}
+body{margin:0;font-family:system-ui,sans-serif;background:#f5f5f0;color:#1a1a1a}
+.container{width:100%;max-width:1000px;margin:auto;padding:16px}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:28px;padding:24px 16px;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.header h1{font-size:clamp(18px,4vw,24px);margin:0 0 6px;color:#1a1a1a}
+.header p{font-size:13px;color:#666;margin:0}
+.badge{display:inline-block;background:#e8f5e9;color:#2e7d32;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px}
+
+/* DIVIDER */
+.divider{text-align:center;margin:24px 0 18px;padding:14px 16px;background:#fff;border-radius:10px;border-left:4px solid #1976d2;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.divider .div-title{font-size:15px;font-weight:700;color:#1976d2}
+.divider .div-sub{font-size:12px;color:#888;margin-top:4px}
+
+/* CARD */
+.card{background:#fff;padding:clamp(14px,3vw,18px);border-radius:10px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.07)}
+.title{font-size:clamp(14px,3vw,15px);font-weight:600;margin-bottom:10px;color:#1a1a1a}
+
+/* COPY BOX */
+.copy-box{background:#f3f4f6;padding:12px;border-radius:8px;margin-bottom:10px;position:relative;overflow-x:auto;border:1px solid #e5e7eb}
+.copy-btn{position:absolute;right:8px;top:8px;background:#1976d2;border:none;color:white;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:11px;white-space:nowrap}
+.copy-btn:active{background:#1565c0}
+pre{margin:0;font-size:clamp(12px,2.8vw,13px);white-space:pre-wrap;word-break:break-word;color:#1a1a1a;padding-right:60px}
+
+/* FILE DOWNLOAD CARD */
+.file-card{background:#fff;border:1.5px solid #e3f2fd;border-radius:10px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.file-header{background:#e3f2fd;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.file-icon{font-size:22px}
+.file-name{font-weight:700;font-size:14px;color:#1565c0}
+.file-desc{font-size:12px;color:#555;margin-top:2px}
+.file-body{padding:14px 16px}
+.file-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.btn-copy-file{flex:1;min-width:120px;padding:10px 12px;background:#f3f4f6;border:1.5px solid #d1d5db;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:#374151;display:flex;align-items:center;justify-content:center;gap:6px;transition:.2s}
+.btn-copy-file:hover{background:#e5e7eb}
+.btn-dl{flex:1;min-width:120px;padding:10px 12px;background:#1976d2;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;transition:.2s}
+.btn-dl:hover{background:#1565c0}
+.note{font-size:12px;color:#888;margin-top:8px}
+
+/* TIPS */
+.tips{background:#fff8e1;border:1.5px solid #ffe082;border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.tips .title{color:#e65100}
+.tips ul{margin:0;padding-left:18px;font-size:13px;color:#555;line-height:2.1}
+.tips strong{color:#1a1a1a}
+code.inline{background:#f3f4f6;border:1px solid #e5e7eb;padding:1px 5px;border-radius:4px;font-size:12px;font-family:monospace}
+
+/* FOOTER */
+.footer{text-align:center;margin-top:30px;padding:20px 10px;font-size:13px;color:#999}
+
+@media(min-width:768px){.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <div class="header">
+        <h1>
+          🤖 Kafi Claude Code Guide
+        </h1>
+        <p>
+          Termux দিয়ে Claude Code ও Chat App সেটআপ করুন
+        </p>
+        <span class="badge">        ✅ Full Setup Guide
+</span>
+      </div>
+      <!-- PART 1 -->
+      <div class="divider">
+        <div class="div-title">
+          ⚙️ Part 1: Claude Code Termux Setup
+        </div>
+        <div class="div-sub">
+          Termux এ Claude Code ইন্সটল ও চালু করুন
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          1️⃣ Update &amp; Upgrade
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            pkg update &amp;&amp; pkg upgrade
+          </pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          2️⃣ Install Dependencies
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            pkg install nodejs git nano
+          </pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          3️⃣ Check Versions
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            node -v
+          </pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            npm -v
+          </pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          4️⃣ Install Claude Code
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            npm install -g @anthropic-ai/claude-code@2.1.112
+          </pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          5️⃣ Run Installer
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            node $PREFIX/lib/node_modules/@anthropic-ai/claude-code/install.cjs
+          </pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          6️⃣ Environment Variables
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export ANTHROPIC_BASE_URL=https://agentrouter.org/
+          </pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export ANTHROPIC_AUTH_TOKEN=sk-Z6Bxxxxxxxxxxxxxxxx (REPLACE WITH YOUR ACTUAL API KEY)
+          </pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export ANTHROPIC_MODEL=claude-opus-4-6
+          </pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export CLAUDE_CODE_USE_AUTH_TOKEN=true
+          </pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          7️⃣ Run Claude
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            claude
+          </pre>
+        </div>
+      </div>
+      <!-- PART 2 -->
+      <div class="divider">
+        <div class="div-title">
+          💬 Part 2: Claude Chat App Setup
+        </div>
+        <div class="div-sub">
+          index.html + server.js দিয়ে Browser-based Chat চালান
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          1️⃣ Termux Storage Permission দিন (একবারই)
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <pre>termux-setup-storage</pre>
+        </div>
+        <p style="font-size:12px;color:#888;margin-top:6px">✅ Allow করুন — এরপর /sdcard অ্যাক্সেস পাবেন।</p>
+      </div>
+      <div class="card">
+        <div class="title">
+          2️⃣ প্রজেক্ট ফোল্ডার তৈরি করুন
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <pre>mkdir -p ~/claude-chat</pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          3️⃣ ফাইল Download করুন নিচে থেকে 👇
+        </div>
+        <p style="font-size:13px;color:#555;margin:0 0 6px">
+          নিচের দুটো ফাইল Download করে manually
+          <strong>claude-chat</strong>
+          ফোল্ডারে রাখুন:
+        </p>
+        <p style="font-size:12px;color:#e65100;background:#fff8e1;padding:8px 10px;border-radius:6px;margin:6px 0 0">
+          📂 File Manager অ্যাপ খুলুন → Download ফোল্ডার → ফাইল দুটো Cut করুন → Internal Storage → Android → data → com.termux → files → home → <strong>claude-chat</strong> ফোল্ডারে Paste করুন।
+        </p>
+      </div>
+      <!-- server.js FILE CARD -->
+      <div class="file-card">
+        <div class="file-header">
+          <div class="file-icon">
+            🟨
+          </div>
+          <div>
+            <div class="file-name">
+              server.js
+            </div>
+            <div class="file-desc">
+              Node.js backend server — Claude Code CLI চালায়
+            </div>
+          </div>
+        </div>
+        <div class="file-body">
+          <p style="font-size:13px;color:#555;margin:0 0 10px">
+            এই ফাইলটি
+            <code class="inline">            ~/claude-chat/
+</code>
+            ফোল্ডারে রাখুন
+          </p>
+          <div class="file-actions">
+            <button class="btn-copy-file" onclick="copyFile(&#39;server&#39;)">
+              📋 Code Copy
+            </button>
+            <a class="btn-dl" href="uploads/server.js" download="server.js">            ⬇️ Download
+</a>
+          </div>
+          <p class="note">
+            📁 GitHub থেকে:
+            <code class="inline">            uploads/server.js
+</code>
+          </p>
+        </div>
+      </div>
+      <!-- index.html FILE CARD -->
+      <div class="file-card">
+        <div class="file-header">
+          <div class="file-icon">
+            🟦
+          </div>
+          <div>
+            <div class="file-name">
+              index.html
+            </div>
+            <div class="file-desc">
+              Chat UI — Browser এ চলে, Claude এর সাথে কথা বলুন
+            </div>
+          </div>
+        </div>
+        <div class="file-body">
+          <p style="font-size:13px;color:#555;margin:0 0 10px">
+            এই ফাইলটি
+            <code class="inline">            ~/claude-chat/
+</code>
+            ফোল্ডারে রাখুন
+          </p>
+          <div class="file-actions">
+            <button class="btn-copy-file" onclick="copyFile(&#39;index&#39;)">
+              📋 Code Copy
+            </button>
+            <a class="btn-dl" href="uploads/index.html" download="index.html">            ⬇️ Download
+</a>
+          </div>
+          <p class="note">
+            📁 GitHub থেকে:
+            <code class="inline">            uploads/index.html
+</code>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          4️⃣ Environment Variables সেট করুন (প্রতি session এ)
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export ANTHROPIC_BASE_URL=https://agentrouter.org/
+          </pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export ANTHROPIC_AUTH_TOKEN=sk-xxxxxxxxxxxxxxxx
+          </pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export ANTHROPIC_MODEL=claude-opus-4-6
+          </pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            export CLAUDE_CODE_USE_AUTH_TOKEN=true
+          </pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">
+          5️⃣ Folder Select করুন ও Server চালু করুন
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>cd ~/claude-chat</pre>
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>node server.js</pre>
+        </div>
+        <p style="font-size:12px;color:#888;margin-top:6px">
+          ✅ সফল হলে দেখবেন:
+          <code class="inline">Claude Chat running: http://localhost:3000</code>
+        </p>
+      </div>
+      <div class="card">
+        <div class="title">
+          6️⃣ Browser এ খুলুন
+        </div>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">
+            Copy
+          </button>
+          <pre>
+            http://localhost:3000
+          </pre>
+        </div>
+        <p style="font-size:12px;color:#888;margin-top:6px">
+          📱 Termux এ server চলতে থাকবে, ফোনের যেকোনো browser এ উপরের link খুলুন।
+        </p>
+      </div>
+      <div class="card">
+        <div class="title">
+          🛑 Server বন্ধ করুন (pkill)
+        </div>
+        <p style="font-size:13px;color:#555;margin:0 0 10px">
+          Termux এ <strong>Ctrl+C</strong> কাজ না করলে বা background এ চললে:
+        </p>
+        <div class="copy-box">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <pre>pkill -f "node server.js"</pre>
+        </div>
+        <p style="font-size:12px;color:#888;margin-top:6px">✅ এটা দিলে localhost:3000 বন্ধ হয়ে যাবে।</p>
+      </div>
+      <!-- TIPS -->
+      <div class="tips">
+        <div class="title">
+          ⚠️ গুরুত্বপূর্ণ টিপস
+        </div>
+        <ul>
+          <li>
+            Server বন্ধ করতে Termux এ
+            <strong>Ctrl+C</strong>
+            চাপুন অথবা <code class="inline">pkill -f "node server.js"</code> দিন
+          </li>
+          <li>
+            নতুন session এ environment variables আবার
+            <strong>            export
+</strong>
+            করতে হবে
+          </li>
+          <li>
+            সব সময়
+            <strong>            claude-chat
+</strong>
+            ফোল্ডারে থেকে server চালু করুন
+          </li>
+          <li>
+            Port 3000 ব্যবহার করতে না পারলে:
+            <code class="inline">            PORT=8080 node server.js
+</code>
+          </li>
+          <li>
+            Termux এ server চলুক, আলাদা browser tab এ chat করুন
+          </li>
+        </ul>
+      </div>
+      <div class="footer">
+        © Kafi Claude Code Guide — Made with ❤️ by Kafi
+      </div>
+    </div>
+    <script>
+      // কমান্ড copy
+function copyCmd(btn){
+  const text = btn.nextElementSibling.innerText.trim();
+  navigator.clipboard.writeText(text).then(()=&gt;{
+    btn.innerText = &#39;✅ Copied&#39;;
+    setTimeout(()=&gt;btn.innerText=&#39;Copy&#39;, 1500);
+  }).catch(()=&gt;{
+    // fallback
+    const ta = document.createElement(&#39;textarea&#39;);
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand(&#39;copy&#39;);
+    document.body.removeChild(ta);
+    btn.innerText = &#39;✅ Copied&#39;;
+    setTimeout(()=&gt;btn.innerText=&#39;Copy&#39;, 1500);
+  });
+}
+
+// ফাইল content fetch করে copy
+async function copyFile(type){
+  const url = type === &#39;server&#39; ? &#39;uploads/server.js&#39; : &#39;uploads/index.html&#39;;
+  try{
+    const res = await fetch(url);
+    if(!res.ok) throw new Error(&#39;fetch failed&#39;);
+    const text = await res.text();
+    await navigator.clipboard.writeText(text);
+    alert(&#39;✅ &#39; + (type===&#39;server&#39;?&#39;server.js&#39;:&#39;index.html&#39;) + &#39; কোড Clipboard এ কপি হয়েছে!&#39;);
+  } catch(e){
+    alert(&#39;⚠️ Copy হয়নি। Download বাটন দিয়ে ফাইল নিন।&#39;);
+  }
+}
+    </script>
+  </body>
+</html>
